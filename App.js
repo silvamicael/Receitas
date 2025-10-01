@@ -10,19 +10,21 @@ export default function App() {
     setNavegacao(tela)
   }
 
+  const renderizacao =  () => {
+    switch(navegacao) {
+      case 'Home':
+        return <Home navegar={navegar}></Home>
+      case 'Receitas':
+        return <Receitas navegar={navegar}></Receitas>
+      default:
+        return <Text>Error 404</Text>
+    }
+  }
+
   return (
     <View style={styles.container}>
-
-      {(navegacao === 'Home') ?(
-        <Home navegar={navegar}></Home>
-      ) : navegacao === 'Receitas' ? (
-        <Receitas navegar={navegar}></Receitas>
-      ) : (
-        <Text>
-          Página Não Encontrada 404
-        </Text>
-      )}
-      
+    
+      {renderizacao()}
 
     </View>
   );
